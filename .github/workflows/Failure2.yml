@@ -1,0 +1,4 @@
+- name: Simulate failure (conditionally)
+if: always() # Ensures this step runs even if previous ones fail 
+run: | echo "Simulating failure..." 
+exit 1
