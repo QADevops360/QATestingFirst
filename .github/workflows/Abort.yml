@@ -1,0 +1,14 @@
+
+runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if deployment should be aborted
+        if: ${{ github.event.inputs.abort == 'true' }}
+        run: |
+          echo "Deployment aborted intentionally."
+          exit 1
+
+      - name: Proceed with deployment
+        if: ${{ github.event.inputs.abort != 'true' }}
+        run: |
+          echo "Running deployment..."
