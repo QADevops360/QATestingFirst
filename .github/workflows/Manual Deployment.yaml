@@ -1,5 +1,16 @@
+name: Manual Deployment
 
-runs-on: ubuntu-latest
+on:
+  workflow_dispatch:
+    inputs:
+      abort:
+        description: "Abort deployment?"
+        required: true
+        default: "false"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check if deployment should be aborted
@@ -12,3 +23,4 @@ runs-on: ubuntu-latest
         if: ${{ github.event.inputs.abort != 'true' }}
         run: |
           echo "Running deployment..."
+          # Add your actual deployment steps here
